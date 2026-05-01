@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-hardware-bg: #0a0a0a;
+  --color-hardware-card: #151619;
+  --color-hardware-accent: #3b82f6;
+  --color-hardware-success: #10b981;
+  --color-hardware-danger: #ef4444;
+  --color-hardware-warning: #f59e0b;
+  --color-hardware-border: #2a2b2e;
+  --color-hardware-text-muted: #8e9299;
+}
+
+@layer base {
+  body {
+    @apply bg-hardware-bg text-white font-sans antialiased;
+  }
+}
+
+.hardware-panel {
+  @apply bg-hardware-card border border-hardware-border rounded-xl shadow-2xl overflow-hidden;
+}
+
+.hardware-btn {
+  @apply transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.lcd-display {
+  @apply font-mono bg-black/40 border border-hardware-border/50 rounded p-2 text-xs;
+}
+
+.glow-success {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+}
+
+.glow-accent {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+.glass-panel {
+  @apply bg-hardware-card/60 backdrop-blur-xl border border-white/10 shadow-2xl;
+}
+
+.floating-window {
+  @apply fixed bottom-8 right-8 w-[360px] z-[9999] cursor-move select-none;
+}
+
+.floating-header {
+  @apply flex items-center justify-between p-3 bg-white/5 border-b border-white/10 rounded-t-xl;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
